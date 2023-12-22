@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-head-line">热搜标签分布图</h1>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        热搜数量与标签关系柱状图
+                    </div>
+                    <div class="panel-body">
+                        <div id="wizardV">
+                            <div id="bar_chart01" style="width:100%;height:450px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/assets/js/echarts.min.js"></script>
+    <script type="text/javascript">
+        var chartDom = document.getElementById('bar_chart01');
+        var myChart = echarts.init(chartDom);
+        var option;
+        option = {
+            xAxis: {
+                type: 'category',
+                name: '标签',
+                data: {{label_list | tojson}},
+                axisLabel: {
+                    textStyle: {
+                        fontSize: 14
+                    }
+                }
+            },
+            yAxis: {
+                type: 'value',
+                name: '数量',
+            },
+            series: [{
+                type: 'bar',
+                data: {{num_list | tojson}},
+                axisLabel: {
+                    textStyle: {
+                        fontSize: 14
+                    }
+                },
+                label: {
+                    show: true, // 显示标签
+                    position: 'top', // 标签显示在柱状图上方
+                }
+            }]
+        };
+        option && myChart.setOption(option);
+    </script>
+    <div id="footer-sec">
+        &copy; 2023
+    </div>
+{% endblock %}

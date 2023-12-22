@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>微博数据可视化系统</title>
+    <link href="/static/assets/css/bootstrap.css" rel="stylesheet"/>
+    <link href="/static/assets/css/font-awesome.css" rel="stylesheet"/>
+    <link href="/static/assets/css/basic.css" rel="stylesheet"/>
+    <link href="/static/assets/css/custom.css" rel="stylesheet"/>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+</head>
+<body>
+<div id="wrapper">
+    <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{{ url_for('index') }}">可视化系统功能列表</a>
+        </div>
+        <div style="margin-left:85%;margin-top: 20px;font-size: 18px;color: white"></div>
+    </nav>
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+                <li>
+                    <a href="{{ url_for('table',page_num=1) }}"><i class="fa fa-bell"></i>热搜列表</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('new_line') }}"><i class="fa fa-bell "></i>最新热搜热度走势</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('label') }}"><i class="fa fa-bell"></i>热搜标签分布</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('label_pie') }}"><i class="fa fa-bell "></i>最新一天标签占比</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('word_num') }}"><i class="fa fa-bell "></i>热搜词频</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('word_cloud') }}"><i class="fa fa-bell"></i>热搜词云</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+    <div id="footer-sec">
+    </div>
+    <script src="/static/assets/js/jquery-1.10.2.js"></script>
+    <script src="/static/assets/js/bootstrap.js"></script>
+    <script src="/static/assets/js/jquery.metisMenu.js"></script>
+    <script src="/static/assets/js/custom.js"></script>
+</div>
+</body>
+</html>
